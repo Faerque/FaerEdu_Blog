@@ -1,11 +1,14 @@
 import React from "react";
-import Blog from "./Blog";
-
+import { useSelector } from "react-redux";
+import Blog from "./Blog.js";
 export default function BlogList() {
+  const blogs = useSelector((state) => state.blogData);
+
   return (
-    <div>
-      all blog list
-      <Blog></Blog>
-    </div>
+    <>
+      {blogs.map((blog) => (
+        <Blog blog={blog} key={blog.id}></Blog>
+      ))}
+    </>
   );
 }

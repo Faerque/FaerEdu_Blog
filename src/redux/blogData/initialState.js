@@ -12,7 +12,7 @@ const initialState = [
   },
   {
     id: 2,
-    name: "Boost your conversion rate",
+    name: "Boost your mind sharping rate",
     authorName: "Learn With Bumit",
     authorImg: "",
     thumbImg:
@@ -23,7 +23,7 @@ const initialState = [
   },
   {
     id: 3,
-    name: "Boost your conversion rate",
+    name: "Boost your writing rate",
     authorName: "Learn With Tumit",
     authorImg: "",
     thumbImg:
