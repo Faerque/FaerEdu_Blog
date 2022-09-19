@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Blog from "./Blog.js";
 export default function BlogList() {
   const blogs = useSelector((state) => state.blogData);
+  const filters = useSelector((state) => state.blogFilters);
 
   return (
     <section className="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
@@ -21,9 +22,31 @@ export default function BlogList() {
         </div>
         {/* Card Gird */}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} />
-          ))}
+          {blogs
+            .filter((blog) => {
+              const { authorName } = filters;
+              if (authorName === blog.authorName) {
+                return blog.authorName;
+              }
+              return blog;
+            })
+            .filter((blog) => {
+              const { authorImg } = filters;
+              if (authorImg === blog.authorImg) {
+                return blog.authorImg;
+              }
+              return blog;
+            })
+            .filter((blog) => {
+              const { tag } = filters;
+              if (tag === blog.category) {
+                return blog.category;
+              }
+              return blog;
+            })
+            .map((blog) => (
+              <Blog key={blog.id} blog={blog} />
+            ))}
         </div>
       </div>
     </section>
