@@ -6,17 +6,17 @@ const blogFiltersReducer = (state = initialState, action) => {
     case AUTHORNAMECHANGED:
       return {
         ...state,
-        name: action.payload,
+        authorName: action.payload,
       };
     case AUTHORIMGCHANGED:
       return {
         ...state,
-        img: action.payload,
+        authorImg: action.payload,
       };
     case TAGCHANGED:
       return {
         ...state,
-        tag: action.payload,
+        Tag: action.payload,
       };
     default:
       return state;

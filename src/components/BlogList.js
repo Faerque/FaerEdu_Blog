@@ -4,7 +4,9 @@ import Blog from "./Blog.js";
 export default function BlogList() {
   const blogs = useSelector((state) => state.blogData);
   const filters = useSelector((state) => state.blogFilters);
-
+  console.log(filters);
+  let intstate = {};
+  console.log(intstate);
   return (
     <section className="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
       <div className="absolute inset-0">
@@ -26,9 +28,11 @@ export default function BlogList() {
             .filter((blog) => {
               const { authorName } = filters;
               if (authorName === blog.authorName) {
-                return blog.authorName;
+                return authorName === blog.authorName;
+              } else {
+                console.log(blog);
+                return blog;
               }
-              return blog;
             })
             .filter((blog) => {
               const { authorImg } = filters;

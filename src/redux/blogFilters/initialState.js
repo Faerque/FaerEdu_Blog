@@ -3,4 +3,5 @@ const initialState = {
   authorImg: [],
   Tag: [],
 };
+
 export default initialState;
