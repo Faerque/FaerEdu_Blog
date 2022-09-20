@@ -1,5 +1,10 @@
-import initialState from "./initialState";
-import { AUTHORIMGCHANGED, AUTHORNAMECHANGED, TAGCHANGED } from "./actionType";
+import initialState from './initialState';
+import {
+  AUTHORIMGCHANGED,
+  AUTHORNAMECHANGED,
+  TAGCHANGED,
+  SEARCH,
+} from './actionType';
 
 const blogFiltersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,6 +22,11 @@ const blogFiltersReducer = (state = initialState, action) => {
       return {
         ...state,
         Tag: action.payload,
+      };
+    case SEARCH:
+      return {
+        ...state,
+        search: action.payload,
       };
     default:
       return state;

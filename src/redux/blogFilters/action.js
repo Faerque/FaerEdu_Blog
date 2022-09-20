@@ -1,4 +1,9 @@
-import { AUTHORNAMECHANGED, AUTHORIMGCHANGED, TAGCHANGED } from "./actionType";
+import {
+  AUTHORNAMECHANGED,
+  AUTHORIMGCHANGED,
+  TAGCHANGED,
+  SEARCH,
+} from './actionType';
 
 export const authorNameChanged = (name) => {
   return {
@@ -17,5 +22,11 @@ export const tagChanged = (tag) => {
   return {
     type: TAGCHANGED,
     payload: tag,
+  };
+};
+export const search = (name) => {
+  return {
+    type: SEARCH,
+    payload: name,
   };
 };
