@@ -5,6 +5,24 @@ export default function BlogList() {
   const blogs = useSelector((state) => state.blogData);
   const filters = useSelector((state) => state.blogFilters);
 
+  const sortingByAuthorName = (blog) => {
+    if (filters.authorName.length > 0) {
+      return filters.authorName.includes(blog.authorName);
+    } else return blog;
+  };
+
+  const sortingByAuthorImg = (blog) => {
+    if (filters.authorImg.length > 0) {
+      return filters.authorImg.includes(blog.authorImg);
+    } else return blog;
+  };
+
+  const sortingByTag = (blog) => {
+    if (filters.Tag.length > 0) {
+      return filters.Tag.includes(blog.category);
+    } else return blog;
+  };
+
   return (
     <section className="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
       <div className="absolute inset-0">
@@ -23,21 +41,9 @@ export default function BlogList() {
         {/* Card Gird */}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {blogs
-            .filter((blog) => {
-              if (filters.authorName.length > 0) {
-                return filters.authorName.includes(blog.authorName);
-              } else return blog;
-            })
-            .filter((blog) => {
-              if (filters.authorImg.length > 0) {
-                return filters.authorImg.includes(blog.authorImg);
-              } else return blog;
-            })
-            .filter((blog) => {
-              if (filters.Tag.length > 0) {
-                return filters.Tag.includes(blog.category);
-              } else return blog;
-            })
+            .filter((blog) => sortingByAuthorName(blog))
+            .filter((blog) => sortingByAuthorImg(blog))
+            .filter((blog) => sortingByTag(blog))
             .map((blog) => (
               <Blog key={blog.id} blog={blog} />
             ))}
